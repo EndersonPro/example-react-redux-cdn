@@ -3,21 +3,21 @@ const { Provider, connect } = ReactRedux;
 
 /* Componente clase para agregar nueva tarea */
 class _addTask extends Component {
-    
+
     constructor(props) {
         super(props)
         this.state = {
-            id: new Number,
-            name: new String
+            id: Number,
+            name: String
         }
     }
 
     render() {
         return (
-            <div>
-                <input value={this.state.name} onChange={this.handlerWriting.bind(this)} type="text" />
-                <button onClick={() => this.saveDataToState()}> Agregar </button>
-            </div>
+            <form>
+                <input placeholder="Ingresa nueva tarea" onChange={this.handlerWriting.bind(this)} type="text" />
+                <button className="btn" type="reset" onClick={() => this.saveDataToState()}> <i className="fas fa-plus"></i> Agregar </button>
+            </form>
         )
     }
 
@@ -28,6 +28,7 @@ class _addTask extends Component {
     saveDataToState() {
         this.setState({ id: Math.round(Math.random() * 99999) })
         this.props.addTasks(this.state)
+        //this.setState({ name: '' })
     }
 }
 const AddTask = connect(null, {
@@ -41,7 +42,7 @@ const Task = (props) => {
     return (
         <li>
             <span>{name}</span>
-            <button onClick={() => removeTask(id)}>Terminada</button>
+            <button className="btn finish" onClick={() => removeTask(id)}>Terminada</button>
         </li>
     )
 }
@@ -72,7 +73,7 @@ const ListTask = connect(mapStateToProps, mapDispatchToProps)(_ListTask)
 
 ReactDOM.render(
     <Provider store={store}>
-        <div>
+        <div className="cont_comp">
             <AddTask />
             <ListTask />
         </div>

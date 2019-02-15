@@ -5,37 +5,31 @@ const initialState = {
     tasks: [
         {
             id: 1,
-            name: 'Aprender react'
+            name: 'Aprender React'
         },
         {
             id: 2,
-            name: 'Aprender redux'
+            name: 'Aprender Redux'
         },
         {
             id: 3,
-            name: 'Aprender react y redux'
+            name: 'Aprender React con Redux'
         }
     ]
 }
 
 /* Actions */
-const LOAD_TASKS = 'LOAD_TASKS';
 const ADD_TASK = 'ADD_TASK';
 const REMOVE_TASK = 'REMOVE_TASK';
-const EDIT_TASK = 'EDIT_TASK';
 
-const loadTasks = () => ({ type: LOAD_TASKS });
 const addTasks = (task) => ({ type: ADD_TASK, task });
 const removeTask = (id) => ({ type: REMOVE_TASK, id });
-const editTask = (task) => ({ type: EDIT_TASK, task })
 
 
-/* Reducer */
+/* Reducer Tasks */
 const Tasks = (state = initialState, actions) => {
     const { type } = actions
     switch (type) {
-        case 'LOAD_TASK':
-            return state;
         case 'ADD_TASK':
             return {
                 tasks: [...state.tasks, actions.task]
