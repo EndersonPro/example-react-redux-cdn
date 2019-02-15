@@ -14,7 +14,7 @@ class _addTask extends Component {
 
     render() {
         return (
-            <form>
+            <form onSubmit={(e) => e.preventDefault()}>
                 <input placeholder="Ingresa nueva tarea" onChange={this.handlerWriting.bind(this)} type="text" />
                 <button className="btn" type="reset" onClick={() => this.saveDataToState()}> <i className="fas fa-plus"></i> Agregar </button>
             </form>
